@@ -966,6 +966,15 @@ return(
 select * from isaco.CarsList where CarCategory = @carCat
 )
 
+go
+
+create function LoginCheck(@username nvarchar(50),@password nvarchar(50))
+returns table
+as
+return(
+select * from isaco.Employee where UserName = @username and UserPassword = @password
+)
+
 --exec AddOrder '91NN68622',2,'Gray',N'آرین',N'کوچک','09128693860','1;2;3'
 --exec AddFactor 'AutoService',N' فیلتر هوا :600000;فیلتر روغن :200000','800000'
 --exec AddServices 1,1,'autoService',N'سرویس دوره ای انجام شود',3

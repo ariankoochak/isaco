@@ -1,37 +1,30 @@
-const http = require("http");
-const url = require("url");
-const hostname = "127.0.0.1";
+const express = require("express");
+const app = express();
 const port = 3000;
+const sql = require("mssql");
+const configDB = require('./configDB')
 
-const server = http.createServer((req, res) => {
-console.log(req);
+app.get("/", (req, res) => {
+    res.send("Hello World!");
 });
 
-server.listen(port, hostname, () => {
-    console.log("server running...");
-    let sql = require("mssql");
-    let config = {
-        user: "isacoBackend",
-        password: "78788989",
-        server: "Arian",
-        database: "isacoDB",
-        options: {
-            trustedConnection: true,
-            encrypt: true,
-            enableArithAbort: true,
-            trustServerCertificate: true,
-        },
-    };
-    
-    sql.connect(config, function (err) {
+app.post("/Login", (req, res) => {
+    let LoginDatas = req._parsedUrl.query.split(":");
+    console.log(`select * from LoginCheck(${LoginDatas[0]},${LoginDatas[1]})`);
+    sql.connect(configDB, function (err) {
         if (err) console.log(err);
         let request = new sql.Request();
         request.query(
-            "select * from isaco.CarsList",
+            `select * from LoginCheck('${LoginDatas[0]}','${LoginDatas[1]}')`,
             function (err, recordset) {
                 if (err) console.log(err);
-                console.log(recordset);
+                res.send(recordset.recordsets[0][0]);
             }
         );
     });
+});
+
+
+app.listen(port, () => {
+    console.log(`isaco app listening on port ${port}`);
 });
