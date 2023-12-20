@@ -69,7 +69,7 @@ CREATE TABLE isaco.Orders(
 	OwnerPhoneNumber NVARCHAR(50) NOT NULL,
     ServicesListIds NVARCHAR(500) NOT NULL,
 	StartTime DATETIME NOT NULL,
-	EndTime DATETIME NOT NULL,
+	EndTime DATETIME,
     PRIMARY KEY (id),
 	FOREIGN KEY (carId) REFERENCES isaco.CarsList(carId)
 ) ON ServicesDatas;
