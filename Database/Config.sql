@@ -96,7 +96,7 @@ CREATE TABLE isaco.ServicesList(
 	isEnd int NOT NULL,
 	isPayed int NOT NULL,
 	StartTime DATETIME NOT NULL,
-	EndTime DATETIME NOT NULL,
+	EndTime DATETIME,
     PRIMARY KEY (ServiceId),
 	FOREIGN KEY (EmployeeId) REFERENCES isaco.Employee(EmployeeId),
 	FOREIGN KEY (factorId) REFERENCES isaco.Factors(factorId),
