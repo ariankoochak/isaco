@@ -1,0 +1,139 @@
+/*-----------------------------fonts*/
+@font-face {
+    font-family: eicons;
+    src: url(../fonts/eicons.woff2);
+}
+
+@font-face {
+    font-family: fa-brands-400;
+    src: url(../fonts/fa-brands-400.woff2);
+}
+
+@font-face {
+    font-family: fa-light-300;
+    src: url(../fonts/fa-light-300.woff2);
+}
+
+@font-face {
+    font-family: fa-regular-400;
+    src: url(../fonts/fa-regular-400.woff2);
+}
+
+@font-face {
+    font-family: fa-solid-900;
+    src: url(../fonts/fa-solid-900.woff2);
+}
+
+@font-face {
+    font-family: yekan-bakh-regular;
+    src: url(../fonts/Yekan-Bakh-Fa-En-04-Regular.woff);
+}
+
+@font-face {
+    font-family: yekan-bakh-medium;
+    src: url(../fonts/Yekan-Bakh-Fa-En-05-Medium.woff);
+}
+
+@font-face {
+    font-family: yekan-bakh-bold;
+    src: url(../fonts/Yekan-Bakh-Fa-En-06-Bold.woff);
+}
+
+@font-face {
+    font-family: yekan-bakh-heavy;
+    src: url(../fonts/Yekan-Bakh-Fa-En-07-Heavy.woff);
+}
+
+@font-face {
+    font-family: yekan-bakh-fat;
+    src: url(../fonts/Yekan-Bakh-Fa-En-08-Fat.woff);
+}
+
+/*-----------------------------fonts*/
+
+body{
+    direction: rtl;
+    background-color: #002855;
+    color: white;
+    font-family: yekan-bakh-regular;
+}
+
+img{
+    width: 100%;
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+}
+
+input:focus{
+    outline: none;
+}
+
+button{
+    font-family: yekan-bakh-regular;
+    cursor: pointer;
+}
+
+/*------------------------------------Login*/
+
+.login-main-div{
+    background-color: #023e7d;
+    border-radius: 8px;
+    text-align: center;
+    width: 450px;
+    margin: 25vh auto 0;
+}
+
+.login-main-div .login-title-container img{
+    margin-top: 20px;
+    width: 100px;
+}
+
+.login-main-div .login-title-container h2{
+    margin: 10px 0;
+}
+
+.login-main-div .text-boxs-container input{
+    direction: ltr;
+    border: none;
+    background-color: #002855;
+    font-size: 20px;
+    color : white;
+    padding: 7px;
+    margin-right: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.login-main-div .text-boxs-container span{
+    display: block;
+    margin: 4px;
+}
+
+.login-main-div .text-boxs-container h4{
+    color: red;
+}
+
+.login-main-div button{
+    background-color: #0466c8;
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    padding: 5px 30px;
+    margin-bottom: 20px;
+}
+.login-main-div button:active{
+    background-color: #0353a4;
+}
+
+
+
+
+/*
+#0466c8
+#0353a4
+#023e7d
+#002855
+*/
