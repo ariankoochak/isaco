@@ -90,20 +90,18 @@ WHERE ServiceId = @ServiceId;
 go
 
 create proc AddFactor
-(@EmployeeId bigint,
+(
 @FactorSubject NVARCHAR(50),
 @FactorBody NVARCHAR(max),
 @TotalPrice NVARCHAR(50)
 )
 AS
 INSERT INTO isaco.Factors(
-    EmployeeId,
     FactorSubject,
     FactorBody,
     TotalPrice
 )
 VALUES (
-	@EmployeeId,
 	@FactorSubject,
     @FactorBody,
     @TotalPrice
