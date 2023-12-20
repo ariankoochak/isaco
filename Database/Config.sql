@@ -77,12 +77,10 @@ CREATE TABLE isaco.Orders(
 
 CREATE TABLE isaco.Factors(
     factorId bigint NOT NULL IDENTITY(1, 1),
-	EmployeeId bigint NOT NULL,
     FactorSubject NVARCHAR(50) NOT NULL,
 	FactorBody NVARCHAR(max) NOT NULL,
 	TotalPrice NVARCHAR(50) NOT NULL,
     PRIMARY KEY (factorId),
-	FOREIGN KEY (EmployeeId) REFERENCES isaco.Employee(EmployeeId),
 ) ON ServicesDatas;
 
 
@@ -845,32 +843,123 @@ WHERE ServiceId = @ServiceId;
 go
 
 create proc AddFactor
-(@EmployeeId bigint,
+(
 @FactorSubject NVARCHAR(50),
 @FactorBody NVARCHAR(max),
 @TotalPrice NVARCHAR(50)
 )
 AS
 INSERT INTO isaco.Factors(
-    EmployeeId,
     FactorSubject,
     FactorBody,
     TotalPrice
 )
 VALUES (
-	@EmployeeId,
 	@FactorSubject,
     @FactorBody,
     @TotalPrice
 ); 
 
+go
+create function FindOrderById (@id bigint)
+returns table
+as
+return(
+select * from isaco.Orders where id = @id
+)
+
+go
+
+create function FindOrdersByPlate (@LicensePlate nvarchar(9))
+returns table
+as
+return(
+select * from isaco.Orders where LicensePlate = @LicensePlate
+)
+
+go
+
+create function GetOwnerDataByOrderId (@id bigint)
+returns table
+as
+return(
+select OwnerName,OwnerLastName,OwnerPhoneNumber from isaco.Orders where id = @id
+)
+
+go
+
+create function GetCarDataByOrderId (@id bigint)
+returns table
+as
+return(
+select * from isaco.CarsList where carId = (select carId from isaco.Orders where id = @id)
+)
+go
+
+create function FindServiceById(@id bigint)
+returns table
+as
+return(
+select * from isaco.ServicesList where ServiceId = @id
+)
+
+go
+
+create function GetEmployeeByServiceId (@id bigint)
+returns table
+as
+return(
+select * from isaco.Employee where EmployeeId = (select EmployeeId from isaco.ServicesList where ServiceId = @id)
+)
+go
+
+create function GetAllServicesByServiceName (@ServiceName nvarchar(50))
+returns table
+as
+return(
+select * from isaco.ServicesList where ServiceName = @ServiceName
+)
+
+go
+
+create function GetNotFinishedServicesByServiceName (@ServiceName nvarchar(50))
+returns table
+as
+return(
+select * from isaco.ServicesList where ServiceName = @ServiceName and isEnd = 0
+)
+
+go
+
+create function GetFinishedServicesByServiceName (@ServiceName nvarchar(50))
+returns table
+as
+return(
+select * from isaco.ServicesList where ServiceName = @ServiceName and isEnd = 1
+)
 
 
+go
 
+create function GeServicesByOrderId (@OrderId bigint)
+returns table
+as
+return(
+select * from isaco.ServicesList where OrderId = @OrderId
+)
+
+go
+
+create function GetServicesByServiceIdWithFactors(@ServiceId bigint)
+returns table
+as
+return(
+select ServiceId,EmployeeId,OrderId,ServiceName,serviceExplain,isEnd,isPayed,StartTime,EndTime,FactorSubject,FactorBody,TotalPrice from isaco.ServicesList inner join isaco.factors on factors.factorId = ServicesList.factorId where ServiceId = @ServiceId
+)
 
 --exec AddOrder '91NN68622',2,'Gray',N'آرین',N'کوچک','09128693860','1;2;3'
---exec AddFactor 1,'AutoService',N' فیلتر هوا :600000;فیلتر روغن :200000','800000'
---exec AddServices 1,1,'autoService',N'سرویس دوره ای انجام شود',1
+--exec AddFactor 'AutoService',N' فیلتر هوا :600000;فیلتر روغن :200000','800000'
+--exec AddServices 1,1,'autoService',N'سرویس دوره ای انجام شود',3
 --exec AddFinishOrderTime 1
 --exec AddFinishServiceTime 1
 --exec AddPayedService 1
