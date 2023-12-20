@@ -3,7 +3,7 @@ import './assets/styles/global.css'
 import { BrowserRouter, Route, Routes} from "react-router-dom";
 import LoginPage from './Layouts/LoginPage/LoginPage';
 import HomePage from './Layouts/HomePage/HomePage';
-import Test from './Layouts/Test/Test';
+import AdminPage from './Layouts/AdminPage/AdminPage';
 
 export default function App() {
   return (
@@ -12,7 +12,7 @@ export default function App() {
               <Routes>
                   <Route path="/" element={<HomePage />}></Route>
                   <Route path="/Login" element={<LoginPage />}></Route>
-                  <Route path="/test" element={<Test />}></Route>
+                  <Route path="/Employee/Admin" element={<AdminPage />}></Route>
               </Routes>
           </BrowserRouter>
       </>
