@@ -72,6 +72,27 @@ app.get("/CarColors", (req, res) => {
         );
     });
 });
+app.post("/AddOrder", (req, res) => {
+    let order = req._parsedUrl.query.split('?');
+    order = order.map((data) => {return decodeURIComponent(data)});
+    console.log(order);
+    console.log(order[4]);
+    console.log(
+        `exec AddOrder '${order[3]}','${order[1]}','${order[2]}','${order[4]}','${order[5]}','${order[6]}','${order[7]}'`
+    );
+    sql.connect(configDB, function (err) {
+        if (err) console.log(err);
+        let request = new sql.Request();
+        request.query(
+            `exec AddOrder '${order[3]}',N'${order[1]}','${order[2]}',N'${order[4]}',N'${order[5]}','${order[6]}',N'${order[7]}'`,
+            function (err, recordset) {
+                if (err) console.log(err);
+                res.status(200).end();
+            }
+        );
+    });
+});
+
 
 
 app.listen(port, () => {

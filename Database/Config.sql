@@ -755,7 +755,7 @@ go
 
 create proc AddOrder
 (@LicensePlate nvarchar(9),
-@carId bigint,
+@carName nvarchar(50),
 @Color nvarchar(50),
 @OwnerName NVARCHAR(50),
 @OwnerLastName NVARCHAR(50),
@@ -774,7 +774,7 @@ INSERT INTO isaco.Orders(
 	)
 VALUES (
 	@LicensePlate,
-	@carId,
+	(select carId from isaco.CarsList where CarName = @carName),
     @Color,
     @OwnerName,
 	@OwnerLastName,

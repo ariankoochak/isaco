@@ -1,9 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { off } from '../../utils/store/slices/isAddOrderState';
 import axios from 'axios';
 
 export default function AddOrderState() {
+    const carType = useRef();
+    const carModel = useRef();
+    const carColor = useRef();
+    const lisencePlate = useRef();
+    const ownerName = useRef();
+    const ownerLastName = useRef();
+    const ownerPhoneNumber = useRef();
+    const autoServiceCheckBox = useRef();
+    const autoServiceDetails = useRef();
+    const engineAndGearboxCheckBox = useRef();
+    const engineAndGearboxDetails = useRef();
+    const frontingCheckBox = useRef();
+    const frontingDetails = useRef();
+    const detailingCheckBox = useRef();
+    const detailingDetails = useRef();
+    const othersCheckBox = useRef();
+    const othersDetails = useRef();
     const dispatch = useDispatch();
     const handleCancelBtn = ()=>{
         dispatch(off())
@@ -66,15 +83,45 @@ export default function AddOrderState() {
                 console.log(error);
             });
     },[])
+    const handleSubmitBtn = (e)=>{
+        e.preventDefault();
+        let servicesData = [];
+        
+        if(autoServiceCheckBox.current.checked){
+            servicesData.push(`${autoServiceCheckBox.current.value}:${autoServiceDetails.current.value}`);
+        }
+        if(engineAndGearboxCheckBox.current.checked){
+            servicesData.push(`${engineAndGearboxCheckBox.current.value}:${engineAndGearboxDetails.current.value}`);
+        }
+        if(frontingCheckBox.current.checked){
+            servicesData.push(`${frontingCheckBox.current.value}:${frontingDetails.current.value}`);
+        }
+        if(detailingCheckBox.current.checked){
+            servicesData.push(`${detailingCheckBox.current.value}:${detailingDetails.current.value}`);
+        }
+        if(othersCheckBox.current.checked){
+            servicesData.push(`${othersCheckBox.current.value}:${othersDetails.current.value}`);
+        }
+        axios
+            .post(`http://localhost:3000/AddOrder?${carType.current.value}?${carModel.current.value}?${carColor.current.value}?${lisencePlate.current.value}?${ownerName.current.value}?${ownerLastName.current.value}?${ownerPhoneNumber.current.value}?${servicesData.join(';')}`)
+            .then(function (response) {
+                console.log(response.status);
+                handleCancelBtn();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
   return (
       <>
           <div className="add-order-state-main-div"></div>
           <div className="add-order-state-main-div-upper">
               <div className="add-order-div">
                   <h2>پذیرش خودرو</h2>
-                  <form action="/action_page.php">
+                  <form action="">
                       <label for="carType">نوع خودرو : </label>
                       <select
+                          ref={carType}
                           id="carType"
                           name="carType"
                           onChange={(e) => {
@@ -86,27 +133,29 @@ export default function AddOrderState() {
                       </select>
                       <br />
                       <label for="carName">مدل خودرو: </label>
-                      <select id="carName" name="carName">
+                      <select id="carName" name="carName" ref={carModel}>
                           {makeCarsModelJsx()}
                       </select>
                       <br />
                       <label for="carColor">رنگ : </label>
-                      <select id="carColor" name="carColor">
+                      <select id="carColor" name="carColor" ref={carColor}>
                           {makeCarsColorJsx()}
                       </select>
                       <br />
                       <label for="LisencePlate">شماره پلاک : </label>
                       <input
+                            ref={lisencePlate}
                           type="text"
                           id="LisencePlate"
                           name="LisencePlate"
                       />
                       <br />
                       <label for="ownerName">نام مالک : </label>
-                      <input type="text" id="ownerName" name="ownerName" />
+                      <input ref={ownerName} type="text" id="ownerName" name="ownerName" />
                       <br />
-                      <label for="ownerLastName">نام خانوادگی مالک : </label>
+                      <label  for="ownerLastName">نام خانوادگی مالک : </label>
                       <input
+                            ref={ownerLastName}
                           type="text"
                           id="ownerLastName"
                           name="ownerLastName"
@@ -114,6 +163,7 @@ export default function AddOrderState() {
                       <br />
                       <label for="ownerPhoneNumber">شماره همراه مالک : </label>
                       <input
+                      ref={ownerPhoneNumber}
                           type="text"
                           id="ownerPhoneNumber"
                           name="ownerPhoneNumber"
@@ -121,6 +171,7 @@ export default function AddOrderState() {
                       <br />
                       <h3>سرویس های مورد نیاز</h3>
                       <input
+                      ref={autoServiceCheckBox}
                           type="checkbox"
                           id="AutoService"
                           name="AutoService"
@@ -129,6 +180,7 @@ export default function AddOrderState() {
                       <label for="AutoService">سرویس دوره ای</label>
                       <br />
                       <input
+                        ref={autoServiceDetails}
                           type="text"
                           placeholder="توضیحات"
                           id="AutoService"
@@ -137,6 +189,7 @@ export default function AddOrderState() {
                       />
                       <br />
                       <input
+                      ref={engineAndGearboxCheckBox}
                           type="checkbox"
                           id="EngineAndGearbox"
                           name="EngineAndGearbox"
@@ -147,6 +200,7 @@ export default function AddOrderState() {
                       </label>
                       <br />
                       <input
+                      ref={engineAndGearboxDetails}
                           type="text"
                           placeholder="توضیحات"
                           id="EngineAndGearbox"
@@ -155,6 +209,7 @@ export default function AddOrderState() {
                       />
                       <br />
                       <input
+                      ref={frontingCheckBox}
                           type="checkbox"
                           id="Fronting"
                           name="Fronting"
@@ -163,6 +218,7 @@ export default function AddOrderState() {
                       <label for="Fronting">جلوبندی</label>
                       <br />
                       <input
+                      ref={frontingDetails}
                           type="text"
                           placeholder="توضیحات"
                           id="Fronting"
@@ -171,6 +227,7 @@ export default function AddOrderState() {
                       />
                       <br />
                       <input
+                      ref={detailingCheckBox}
                           type="checkbox"
                           id="Detailing"
                           name="Detailing"
@@ -179,6 +236,7 @@ export default function AddOrderState() {
                       <label for="Detailing">سرامیک و صافکاری بدنه</label>
                       <br />
                       <input
+                      ref={detailingDetails}
                           type="text"
                           placeholder="توضیحات"
                           id="Detailing"
@@ -187,6 +245,7 @@ export default function AddOrderState() {
                       />
                       <br />
                       <input
+                      ref={othersCheckBox}
                           type="checkbox"
                           id="Others"
                           name="Others"
@@ -195,6 +254,7 @@ export default function AddOrderState() {
                       <label for="Others">سایر خدمات مورد نیاز</label>
                       <br />
                       <input
+                      ref={othersDetails}
                           type="text"
                           placeholder="توضیحات"
                           id="Others"
@@ -202,7 +262,11 @@ export default function AddOrderState() {
                           className="detail-input"
                       />
                       <br />
-                      <button type="submit" className="submit-btn">
+                      <button
+                          type="submit"
+                          className="submit-btn"
+                          onClick={handleSubmitBtn}
+                      >
                           ثبت پذیرش
                       </button>
                       <button className="cancel-btn" onClick={handleCancelBtn}>
