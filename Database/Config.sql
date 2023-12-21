@@ -386,7 +386,7 @@ INSERT INTO isaco.CarsList(
     CarCategory,
     Colors)
 VALUES (
-	N'آریسان',
+	N' 2 آریسان',
 	'XU7',
     'Arisun',
     'Beige;Black;BluishBlue;MetalicGray;Gray;Charcoal;Silver;White'
@@ -974,6 +974,28 @@ as
 return(
 select * from isaco.Employee where UserName = @username and UserPassword = @password
 )
+go
+create function getCarsNameByCarCategory(@carCategory nvarchar(50))
+returns table
+as
+return(
+select CarName from isaco.CarsList where CarCategory = @carCategory
+)
+go
+
+create function getCarColorsByCarCategory(@carCategory nvarchar(50))
+returns table
+as
+return(
+select DISTINCT Colors from isaco.CarsList where CarCategory = @carCategory
+)
+go
+
+create view carsType
+as
+select DISTINCT  CarCategory from isaco.CarsList
+
+
 
 --exec AddOrder '91NN68622',2,'Gray',N'آرین',N'کوچک','09128693860','1;2;3'
 --exec AddFactor 'AutoService',N' فیلتر هوا :600000;فیلتر روغن :200000','800000'

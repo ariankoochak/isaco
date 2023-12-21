@@ -1,12 +1,71 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { off } from '../../utils/store/slices/isAddOrderState';
+import axios from 'axios';
 
 export default function AddOrderState() {
     const dispatch = useDispatch();
     const handleCancelBtn = ()=>{
         dispatch(off())
     }
+    const [carsType,setCarsType] = useState([])
+    const [CarsModel, setCarsModel] = useState([{ CarName : '2008'}]);
+    const [CarColors,setCarColors] = useState(["MetalicBlack",'MetalicGray','MetalicSilver','RoyalBlue','VenetianRed','White','White2Layer'])
+    const makeCarsTypeJsx = ()=>{
+        return carsType.map((carType)=>{
+            return <option value={`${carType.CarCategory}`} key={`${carType.CarCategory}`}>{carType.CarCategory}</option>;
+        })
+    }
+    const makeCarsModelJsx = ()=>{
+        return CarsModel.map((carModel) => {
+            return (
+                <option
+                    value={`${carModel.CarName}`}
+                    key={`${carModel.CarName}`}
+                >
+                    {carModel.CarName}
+                </option>
+            );
+        });
+    }
+    const makeCarsColorJsx = ()=>{
+        return CarColors.map((color) => {
+            return (
+                <option value={`${color}`} key={`${color}`}>
+                    {color}
+                </option>
+            );
+        });
+    }
+    const updateCarModel = (carType)=>{
+        axios
+            .get(`http://localhost:3000/CarModel?${carType}`)
+            .then(function (response) {
+                setCarsModel(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+    const updateCarColors = (carType)=>{
+        axios
+            .get(`http://localhost:3000/CarColors?${carType}`)
+            .then(function (response) {
+                setCarColors(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+    useEffect(()=>{
+        axios.get(`http://localhost:3000/CarsType`)
+            .then(function (response) {
+                setCarsType(response.data)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    },[])
   return (
       <>
           <div className="add-order-state-main-div"></div>
@@ -15,31 +74,33 @@ export default function AddOrderState() {
                   <h2>پذیرش خودرو</h2>
                   <form action="/action_page.php">
                       <label for="carType">نوع خودرو : </label>
-                      <select id="carType" name="carType">
-                          <option value="volvo">Volvo</option>
-                          <option value="saab">Saab</option>
-                          <option value="fiat">Fiat</option>
-                          <option value="audi">Audi</option>
+                      <select
+                          id="carType"
+                          name="carType"
+                          onChange={(e) => {
+                              updateCarModel(e.target.value);
+                              updateCarColors(e.target.value);
+                          }}
+                      >
+                          {makeCarsTypeJsx()}
                       </select>
                       <br />
                       <label for="carName">مدل خودرو: </label>
                       <select id="carName" name="carName">
-                          <option value="volvo">Volvo</option>
-                          <option value="saab">Saab</option>
-                          <option value="fiat">Fiat</option>
-                          <option value="audi">Audi</option>
+                          {makeCarsModelJsx()}
                       </select>
                       <br />
                       <label for="carColor">رنگ : </label>
                       <select id="carColor" name="carColor">
-                          <option value="volvo">Volvo</option>
-                          <option value="saab">Saab</option>
-                          <option value="fiat">Fiat</option>
-                          <option value="audi">Audi</option>
+                          {makeCarsColorJsx()}
                       </select>
                       <br />
                       <label for="LisencePlate">شماره پلاک : </label>
-                      <input type="text" id="LisencePlate" name="LisencePlate" />
+                      <input
+                          type="text"
+                          id="LisencePlate"
+                          name="LisencePlate"
+                      />
                       <br />
                       <label for="ownerName">نام مالک : </label>
                       <input type="text" id="ownerName" name="ownerName" />
