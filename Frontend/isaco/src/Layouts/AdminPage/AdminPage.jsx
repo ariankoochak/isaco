@@ -1,7 +1,10 @@
 import React from 'react'
+import Header from '../../components/Header/Header'
 
 export default function AdminPage() {
   return (
-    <div>AdminPage</div>
+    <>
+    <Header/>
+    </>
   )
 }

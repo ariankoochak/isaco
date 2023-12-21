@@ -129,6 +129,35 @@ button{
 }
 
 
+.header-main-div{
+    background-color: #0353a4;
+    border-radius: 10px;
+    width: 1200px;
+    margin: 20px auto;
+    text-align: center;
+    cursor: default;
+}
+
+.header-main-div h3{
+    display: inline-block;
+}
+
+.header-main-div span{
+    font-size: 20px;
+    font-family: yekan-bakh-bold;
+}
+
+.header-main-div h3,.header-main-div span{
+    position: relative;
+    top: -20px;
+}
+
+.header-main-div img{
+    width: 50px;
+    margin: 10px 470px 0;
+}
+
+
 
 
 /*
