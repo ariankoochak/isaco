@@ -265,10 +265,29 @@ button{
 
 .last-order-list-main-div{
     background-color: #0466c8;
+    width: 70%;
+    border-radius: 10px;
 }
 
 .order-card-main-div{
     background-color: #021020;
+    width: 95%;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+
+.order-card-main-div .image-container,.order-card-main-div .datas-container{
+    display: inline-block;
+}
+
+.order-card-main-div .image-container {
+    width: 30%;
+}
+
+
+.order-card-main-div .datas-container h2{
+    font-size: 25px;
+    display: inline-block;
 }
 
 /*

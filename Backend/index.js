@@ -94,11 +94,11 @@ app.post("/AddOrder", (req, res) => {
 });
 
 app.get("/Orders", (req, res) => {
-    console.log(`select * from isaco.Orders`);
+    console.log(`select * from ordersList`);
     sql.connect(configDB, function (err) {
         if (err) console.log(err);
         let request = new sql.Request();
-        request.query(`select * from isaco.Orders`, function (err, recordset) {
+        request.query(`select * from ordersList`, function (err, recordset) {
             if (err) console.log(err);
             res.send(recordset.recordsets)
         });
