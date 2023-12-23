@@ -93,7 +93,17 @@ app.post("/AddOrder", (req, res) => {
     });
 });
 
-
+app.get("/Orders", (req, res) => {
+    console.log(`select * from isaco.Orders`);
+    sql.connect(configDB, function (err) {
+        if (err) console.log(err);
+        let request = new sql.Request();
+        request.query(`select * from isaco.Orders`, function (err, recordset) {
+            if (err) console.log(err);
+            res.send(recordset.recordsets)
+        });
+    });
+});
 
 app.listen(port, () => {
     console.log(`isaco app listening on port ${port}`);

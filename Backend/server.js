@@ -13,7 +13,7 @@ server.listen(port, hostname, () => {
     let config = {
         user: "isacoBackend",
         password: "78788989",
-        server: "Arian",
+        server: "DESKTOP-ORUODPK",
         database: "isacoDB",
         options: {
             trustedConnection: true,
