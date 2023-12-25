@@ -1006,4 +1006,3 @@ select id,LicensePlate,Color,OwnerName,OwnerLastName,OwnerPhoneNumber,ServicesLi
 --exec AddFinishOrderTime 1
 --exec AddFinishServiceTime 1
 --exec AddPayedService 1
-

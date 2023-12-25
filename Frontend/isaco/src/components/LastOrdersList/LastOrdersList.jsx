@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import OrderCard from '../OrderCard/OrderCard'
-import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 export default function LastOrdersList() {
     const [OrdersList,setOrdersList] = useState([])
-    useEffect(()=>{
-                axios
-                    .get(`http://localhost:3000/Orders`)
-                    .then(function (response) {
-                        setOrdersList(response.data[0])
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-    },[])
+    const reduxOrdersList = useSelector((store) => {
+        return store.OrdersList.OrdersList
+    });
+    useEffect(() => {
+        setOrdersList(reduxOrdersList);
+    }, [reduxOrdersList]);
     const MakeOrderCardJsx = ()=>{
         return OrdersList.map((order)=>{
             return <OrderCard key={order.id} oderData = {order}/>

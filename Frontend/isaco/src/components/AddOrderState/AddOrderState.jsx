@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { off } from '../../utils/store/slices/isAddOrderState';
 import axios from 'axios';
+import { updateOrderList } from '../../utils/store/slices/OrdersList';
 
 export default function AddOrderState() {
     const carType = useRef();
@@ -106,6 +107,14 @@ export default function AddOrderState() {
             .post(`http://localhost:3000/AddOrder?${carType.current.value}?${carModel.current.value}?${carColor.current.value}?${lisencePlate.current.value}?${ownerName.current.value}?${ownerLastName.current.value}?${ownerPhoneNumber.current.value}?${servicesData.join(';')}`)
             .then(function (response) {
                 console.log(response.status);
+                axios
+                .get(`http://localhost:3000/Orders`)
+                .then(function (response) {
+                    dispatch(updateOrderList(response.data[0]));
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
                 handleCancelBtn();
             })
             .catch(function (error) {

@@ -265,6 +265,28 @@ button{
     accent-color:  #031b36;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 200px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0353a4; 
+  border-radius: 200px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #031b36; 
+  border-radius: 200px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #020f1d; 
+}
+
 .last-order-list-main-div{
     background-color: #0353a4;
     width: 875px;
@@ -273,13 +295,15 @@ button{
     display: inline-block;
     float: left;
     margin-top: 15px;
+    overflow-x: hidden;
 }
 
 .order-card-main-div{
     background-color: #021020;
-    width: 95%;
-    margin: 10px auto;
+    width: 97%;
+    margin: 15px auto;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .order-card-main-div .image-container,.order-card-main-div .datas-container{
@@ -313,6 +337,20 @@ button{
     top: -30px;
 }
 
+.order-status{
+    display: inline-block;
+    float: left;
+    position: relative;
+    left: -160px;
+}
+
+.order-status .end{
+    color: green;
+}
+
+.order-status .working{
+    color: red;
+}
 
 /*
 #0466c8

@@ -12,6 +12,12 @@ export default function OrderCard(propsData) {
     }
     return services.join(' / ')
   };
+  const isEnd = (endTime)=>{
+    if(endTime == null)
+        return false
+    else
+        return true
+  }
   return (
       <div className="order-card-main-div">
           <div className="image-container">
@@ -30,6 +36,9 @@ export default function OrderCard(propsData) {
               <div className="start-time">
                   <span className="date-label">تاریخ پذیرش :</span>
                   <span className="date"> {propsData.oderData.StartTime}</span>
+              </div>
+              <div className="order-status">
+                  <span className={isEnd(propsData.oderData.EndTime) ? 'end' : 'working'}>{isEnd(propsData.oderData.EndTime) ? 'اتمام کار' : 'در حال انجام'}</span>
               </div>
           </div>
       </div>
