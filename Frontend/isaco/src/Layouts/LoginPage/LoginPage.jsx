@@ -21,7 +21,10 @@ export default function LoginPage() {
         axios.get(`http://localhost:3000/Login?${userNameVal}:${passwordVal}`)
             .then(function (response) {
                 dispatch(logining(response.data))
-                navigate(`/Employee/${response.data.ServeiceName}`);
+                if (response.data.ServeiceName === 'Admin')
+                    navigate(`/Employee/Admin`);
+                else
+                    navigate(`/Employee/Employees`);
             })
             .catch(function (error) {
                 console.log(error);

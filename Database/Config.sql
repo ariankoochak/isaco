@@ -1006,3 +1006,10 @@ select id,LicensePlate,Color,OwnerName,OwnerLastName,OwnerPhoneNumber,ServicesLi
 --exec AddFinishOrderTime 1
 --exec AddFinishServiceTime 1
 --exec AddPayedService 1
+go
+create function getOrdersByService(@serviceName nvarchar(50))
+returns table
+as
+return(
+select id,LicensePlate,Color,OwnerName,OwnerLastName,OwnerPhoneNumber,ServicesListIds,FORMAT(StartTime,'yyyy/MM/dd','fa') as 'StartTime',EndTime,CarName,Engine,CarCategory,Colors from isaco.Orders inner join isaco.CarsList on CarsList.carId = Orders.carId where ServicesListIds like '%' + @serviceName + '%'
+)

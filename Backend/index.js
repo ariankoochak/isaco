@@ -105,6 +105,23 @@ app.get("/Orders", (req, res) => {
     });
 });
 
+app.get("/getServiceOrder", (req, res) => {
+    let serviceName = req._parsedUrl.query;
+    console.log(`select * from getOrdersByService(${serviceName})`);
+    sql.connect(configDB, function (err) {
+        if (err) console.log(err);
+        let request = new sql.Request();
+        request.query(
+            `select * from getOrdersByService('${serviceName}')`,
+            function (err, recordset) {
+                if (err) console.log(err);
+                console.log(recordset.recordset);
+                res.send(recordset.recordset);
+            }
+        );
+    });
+});
+
 app.listen(port, () => {
     console.log(`isaco app listening on port ${port}`);
 });

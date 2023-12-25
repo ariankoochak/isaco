@@ -154,8 +154,26 @@ button{
 
 .header-main-div img{
     width: 50px;
-    margin: 10px 470px 0;
+    margin: 10px 470px 0 450px;
 }
+
+.log-out-btn{
+    background-color: #7d0202;
+    border-radius: 8px;
+    padding: 5px 7px;
+    margin-right: 10px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    border: none;
+    position: relative;
+    top: -20px;
+}
+
+.log-out-btn:hover{
+    background-color: #9c0606;
+}
+
 .main-container{
     width: 1200px;
     margin: 20px auto;
@@ -455,6 +473,57 @@ button{
     display: block;
     margin: 17px auto 0 auto;
 }
+
+.employee-orders-list-main-div{    
+    background-color: #0353a4;
+    width: 600px;
+    height: 480px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 15px;
+    overflow-x: hidden;
+}
+
+.employee-order-card-main-div{
+    background-color: #021020;
+    width: 97%;
+    margin: 15px auto;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.employee-order-card-main-div .image-container,.order-card-main-div .datas-container{
+    display: inline-block;
+}
+
+.employee-order-card-main-div .image-container {
+    width: 30%;
+}
+
+.employee-order-card-main-div .datas-container{
+    /* float: left; */
+    display: inline-block;
+    width: 70%
+}
+
+.employee-order-card-main-div .datas-container .title h2{
+    font-size: 25px;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.employee-order-card-main-div .datas-container .describe{
+    display: inline-block;
+}
+
+.employee-order-card-main-div .datas-container .start-time{
+    float: left;
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+    top: -30px;
+}
+
 /*
 #0466c8
 #0353a4
