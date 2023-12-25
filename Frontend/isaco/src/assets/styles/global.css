@@ -133,8 +133,7 @@ button{
 .header-main-div{
     background-color: #0353a4;
     border-radius: 10px;
-    width: 1200px;
-    margin: 20px auto;
+    width: 100%;
     text-align: center;
     cursor: default;
 }
@@ -157,7 +156,10 @@ button{
     width: 50px;
     margin: 10px 470px 0;
 }
-
+.main-container{
+    width: 1200px;
+    margin: 20px auto;
+}
 
 .add-new-order-btn{
     background-color: #0353a4;
@@ -167,7 +169,7 @@ button{
     border-radius: 10px;
     font-size: 20px;
     font-family: yekan-bakh-bold;
-    margin-right: 360px;
+    margin-top: 15px;
 }
 
 .add-new-order-btn:hover{
@@ -264,9 +266,13 @@ button{
 }
 
 .last-order-list-main-div{
-    background-color: #0466c8;
-    width: 70%;
+    background-color: #0353a4;
+    width: 875px;
+    height: 500px;
     border-radius: 10px;
+    display: inline-block;
+    float: left;
+    margin-top: 15px;
 }
 
 .order-card-main-div{
@@ -281,14 +287,32 @@ button{
 }
 
 .order-card-main-div .image-container {
-    width: 30%;
+    width: 20%;
 }
 
+.order-card-main-div .datas-container{
+    float: left;
+    width: 80%;
+}
 
-.order-card-main-div .datas-container h2{
+.order-card-main-div .datas-container .title h2{
     font-size: 25px;
     display: inline-block;
+    margin-top: 15px;
 }
+
+.order-card-main-div .datas-container .describe{
+    display: inline-block;
+}
+
+.order-card-main-div .datas-container .start-time{
+    float: left;
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+    top: -30px;
+}
+
 
 /*
 #0466c8

@@ -9,9 +9,12 @@ export default function AdminPage() {
   return (
       <>
           {isAddOrderState && <AddOrderState />}
-          <Header />
-          <AddNewOrder />
-          <LastOrdersList/>
+
+          <div className="main-container">
+              <Header />
+              <AddNewOrder />
+              <LastOrdersList />
+          </div>
       </>
   );
 }
