@@ -1,7 +1,7 @@
 module.exports = {
     user: "isacoBackend",
     password: "78788989",
-    server: "DESKTOP-ORUODPK",
+    server: "Arian",
     database: "isacoDB",
     options: {
         trustedConnection: true,
