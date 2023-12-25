@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import LastOrdersList from '../../components/LastOrdersList/LastOrdersList';
 import axios from 'axios';
 import { updateOrderList } from '../../utils/store/slices/OrdersList';
+import AdminFinancialReport from '../../components/AdminFinancialReport/AdminFinancialReport';
+import AdminServiceCountReport from '../../components/AdminServiceCountReport/AdminServiceCountReport';
 export default function AdminPage() {
     const dispatch = useDispatch();
   const isAddOrderState = useSelector((state)=>state.isAddOrderState.isAddOrderState)
@@ -27,6 +29,8 @@ export default function AdminPage() {
               <Header />
               <AddNewOrder />
               <LastOrdersList />
+              <AdminFinancialReport/>
+              <AdminServiceCountReport/>
           </div>
       </>
   );
