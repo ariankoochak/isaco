@@ -999,7 +999,7 @@ go
 
 create view ordersList
 as
-select id,LicensePlate,Color,OwnerName,OwnerLastName,OwnerPhoneNumber,ServicesListIds,StartTime,EndTime,CarName,Engine,CarCategory,Colors from isaco.Orders inner join isaco.CarsList on CarsList.carId = Orders.carId
+select id,LicensePlate,Color,OwnerName,OwnerLastName,OwnerPhoneNumber,ServicesListIds,FORMAT(StartTime,'yyyy/MM/dd','fa') as 'StartTime',EndTime,CarName,Engine,CarCategory,Colors from isaco.Orders inner join isaco.CarsList on CarsList.carId = Orders.carId
 --exec AddOrder '91NN68622',2,'Gray',N'آرین',N'کوچک','09128693860','1;2;3'
 --exec AddFactor 'AutoService',N' فیلتر هوا :600000;فیلتر روغن :200000','800000'
 --exec AddServices 1,1,'autoService',N'سرویس دوره ای انجام شود',3
