@@ -403,7 +403,58 @@ button{
     text-align: right;
 }
 
+.admin-most-car-order-report{
+    background-color: #0353a4;
+    border-radius: 10px;
+    width: 1200px;
+    margin-top: 15px;
+    float: left;
+    text-align: center;
+    padding-top: 15px;
+}
 
+.cars-card-main-div{
+    background-color: #021020;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 15px;
+    margin: 0 10px;
+    margin-bottom: 15px;
+}
+.cars-card-main-div .image{
+    width: 200px;
+    display: inline-block;
+}
+.cars-card-main-div .end-date{
+    text-align: right;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.cars-card-main-div .end-date .end-date-time{
+    float: left;
+}
+.upco-btn-main-div{
+    float: right;
+    width: 312px;
+    /* background-color: red; */
+     background: linear-gradient(
+    344deg,
+    black 0%,
+    black 50%,
+    red 50%,
+    Red 100%
+  );
+    border-radius: 10px;
+    height: 98px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.upco-btn-main-div img{
+    width: 60px;
+    display: block;
+    margin: 17px auto 0 auto;
+}
 /*
 #0466c8
 #0353a4
