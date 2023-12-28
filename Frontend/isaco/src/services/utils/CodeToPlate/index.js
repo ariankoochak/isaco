@@ -1,5 +1,7 @@
+import toPersianDigit from "../ToPersianDigit";
+
 const codeToPlate = (code) => {
-    let template = [code.substring(0,2)];
+    let template = [toPersianDigit(Number(code.substring(0,2)))];
     let alphabet = code.substring(2,4);
     switch (alphabet) {
         case "BE":
@@ -84,8 +86,8 @@ const codeToPlate = (code) => {
             console.error("error in code to plate");
     }
     template.push(alphabet)
-    template.push(code.substring(4,7));
-    template.push(code.substring(7));
+    template.push(toPersianDigit(Number(code.substring(4,7))));
+    template.push(toPersianDigit(Number(code.substring(7))));
     return template
 };
 export default codeToPlate;
