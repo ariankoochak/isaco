@@ -1,5 +1,6 @@
 import React from 'react'
 import serviceNameConvertor from '../../services/utils/ServiceNameConvertor';
+import Plate from '../Plate/Plate';
 
 export default function OrderCard(propsData) {
   console.log(propsData);
@@ -38,7 +39,16 @@ export default function OrderCard(propsData) {
                   <span className="date"> {propsData.oderData.StartTime}</span>
               </div>
               <div className="order-status">
-                  <span className={isEnd(propsData.oderData.EndTime) ? 'end' : 'working'}>{isEnd(propsData.oderData.EndTime) ? 'اتمام کار' : 'در حال انجام'}</span>
+                  <span
+                      className={
+                          isEnd(propsData.oderData.EndTime) ? "end" : "working"
+                      }
+                  >
+                      {isEnd(propsData.oderData.EndTime)
+                          ? "اتمام کار"
+                          : "در حال انجام"}
+                  </span>
+              <Plate plateCode={propsData.oderData.LicensePlate} />
               </div>
           </div>
       </div>

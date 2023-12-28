@@ -4,6 +4,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logining } from "../../utils/store/slices/userLogin";
 import { useNavigate } from "react-router-dom";
+import codeToPlate from "../../services/utils/CodeToPlate";
 
 export default function LoginPage() {
     const dispatch = useDispatch();
@@ -33,6 +34,7 @@ export default function LoginPage() {
     };
     return (
         <>
+        {codeToPlate('91NN68622')}
             <div className="login-main-div">
                 <div className="login-title-container">
                     <img src={LogoImage} alt="logo" />

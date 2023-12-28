@@ -360,6 +360,7 @@ button{
     float: left;
     position: relative;
     left: -160px;
+    top: -7px;
 }
 
 .order-status .end{
@@ -524,6 +525,39 @@ button{
     top: -30px;
 }
 
+.plate-main-div{
+    background-color: white;
+    color: black;
+    font-family: yekan-bakh-heavy;
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 0 5px;
+    overflow: hidden;
+}
+
+.plate-main-div div{
+    display: inline-block;
+}
+
+.plate-main-div .plate-region{
+    position: relative;
+    top: 7px;
+    right: -2px;
+}
+.plate-main-div .plate-region::after{
+    content: 'ایران ';
+    font-size: 8px;
+    position: relative;
+    top: -15px;
+    right: -15px;
+}
+
+.plate-main-div .spliter{
+    width: 2px;
+    height: 25px;
+    margin: 0;
+    background-color: black;
+}
 /*
 #0466c8
 #0353a4

@@ -16,7 +16,7 @@ ALTER DATABASE isacoDB
 ADD FILE 
 (
     NAME = isacoDatas,
-    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER22\MSSQL\DATA\isacoDatas.ndf'
+    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\isacoDatas.ndf'
 )
 TO FILEGROUP isacoDatas
 GO
@@ -29,7 +29,7 @@ ALTER DATABASE isacoDB
 ADD FILE 
 (
     NAME = ServicesDatas,
-    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER22\MSSQL\DATA\ServicesDatas.ndf'
+    FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\ServicesDatas.ndf'
 )
 TO FILEGROUP ServicesDatas
 GO
@@ -1013,3 +1013,5 @@ as
 return(
 select id,LicensePlate,Color,OwnerName,OwnerLastName,OwnerPhoneNumber,ServicesListIds,FORMAT(StartTime,'yyyy/MM/dd','fa') as 'StartTime',EndTime,CarName,Engine,CarCategory,Colors from isaco.Orders inner join isaco.CarsList on CarsList.carId = Orders.carId where ServicesListIds like '%' + @serviceName + '%'
 )
+
+
