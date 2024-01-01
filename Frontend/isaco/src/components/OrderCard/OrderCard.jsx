@@ -28,27 +28,40 @@ export default function OrderCard(propsData) {
               />
           </div>
           <div className="datas-container">
-              <div className="title">
-                  <h2>{propsData.oderData.CarName}</h2>
+              <div className="right-side">
+                  <div className="title">
+                      <h2>{propsData.oderData.CarName}</h2>
+                  </div>
+                  <div className="describe">
+                      <p>
+                          {serviceDecoder(propsData.oderData.ServicesListIds)}
+                      </p>
+                  </div>
               </div>
-              <div className="describe">
-                  <p>{serviceDecoder(propsData.oderData.ServicesListIds)}</p>
-              </div>
-              <div className="start-time">
-                  <span className="date-label">تاریخ پذیرش :</span>
-                  <span className="date"> {propsData.oderData.StartTime}</span>
-              </div>
-              <div className="order-status">
-                  <span
-                      className={
-                          isEnd(propsData.oderData.EndTime) ? "end" : "working"
-                      }
-                  >
-                      {isEnd(propsData.oderData.EndTime)
-                          ? "اتمام کار"
-                          : "در حال انجام"}
-                  </span>
-              <Plate plateCode={propsData.oderData.LicensePlate} />
+              <div className="left-side">
+                  <div className="start-time">
+                      <span className="date-label">تاریخ پذیرش :</span>
+                      <span className="date">
+                          {" "}
+                          {propsData.oderData.StartTime}
+                      </span>
+                  </div>
+                  <div className="order-status">
+                      <span
+                          className={
+                              isEnd(propsData.oderData.EndTime)
+                                  ? "end"
+                                  : "working"
+                          }
+                      >
+                          {isEnd(propsData.oderData.EndTime)
+                              ? "اتمام کار"
+                              : "در حال انجام"}
+                      </span>
+                  </div>
+                  <div className="lisence-plate">
+                      <Plate plateCode={propsData.oderData.LicensePlate} />
+                  </div>
               </div>
           </div>
       </div>

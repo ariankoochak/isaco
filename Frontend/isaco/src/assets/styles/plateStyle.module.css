@@ -1,0 +1,79 @@
+
+
+.mainPlate{
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 20px;
+    height: 24.5px;
+}
+
+.regionPlate{
+    display: inline-block;
+    outline: 2px solid black;
+    border-radius: 0 3px 3px 0;
+    padding: 6px 5px 0 5px;
+}
+
+.iranLable{
+    display: block;
+    font-size: 10px;
+    margin-bottom: -11px;
+    margin-top: -8px;
+}
+
+.regionCode{
+    display: block;
+    margin-bottom: -9px;
+}
+
+.oddOrEvenPlate,.alphabetPlate,.numberPlate{
+    display: inline-block;
+}
+
+.oddOrEvenPlate span{
+    margin: 0 5px;
+    position: relative;
+    display: block;
+}
+
+.alphabetPlate span{
+    display: block;
+    position: relative;
+    top: -3px;
+}
+
+.numberPlate span{
+    margin-left: 11px;
+    margin-right: 5px;
+    display: block;
+}
+
+.blueIrLabel{
+    position: relative;
+    top: -6px;
+    border-radius: 3px 0 0 3px;
+    right: -11.9px;
+    background-color: blue;
+    height: 24.5px;
+    width: 10px;
+    display: inline-block;
+}
+
+.blueIrLabel img{
+    width: 80%;
+    margin: 4px auto 0;
+    display: block;
+}
+
+.blueIrLabel span{
+    direction: ltr;
+    font-size: 4px;
+    margin-top: -2px;
+    position: relative;
+    top: 8px;
+    left: 1px;
+    display: block;
+}

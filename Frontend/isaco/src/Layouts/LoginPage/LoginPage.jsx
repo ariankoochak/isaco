@@ -34,7 +34,6 @@ export default function LoginPage() {
     };
     return (
         <>
-        {codeToPlate('91NN68622')}
             <div className="login-main-div">
                 <div className="login-title-container">
                     <img src={LogoImage} alt="logo" />

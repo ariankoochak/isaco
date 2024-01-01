@@ -332,9 +332,26 @@ button{
     width: 20%;
 }
 
+
 .order-card-main-div .datas-container{
     float: left;
     width: 80%;
+}
+
+.order-card-main-div .datas-container .left-side,
+.order-card-main-div .datas-container .right-side{
+    display: inline-block;
+    height: 105px;
+}
+
+.order-card-main-div .datas-container .left-side{
+    width: 30%;
+    float: left;
+}
+
+.order-card-main-div .datas-container .right-side{
+    width: 69%;
+    float: right;
 }
 
 .order-card-main-div .datas-container .title h2{
@@ -351,17 +368,25 @@ button{
     float: left;
     display: inline-block;
     margin-left: 20px;
+    margin-top: 15px;
     position: relative;
-    top: -30px;
 }
 
 .order-status{
-    display: inline-block;
     float: left;
-    position: relative;
-    left: -160px;
-    top: -7px;
+    width: 100%;
+    text-align: left;
+    margin-left: 30px;
+    margin-bottom: 5px;
 }
+
+.order-card-main-div .datas-container .lisence-plate{
+    float: left;
+    width: 100%;
+    text-align: left;
+    margin-left: 10px;
+}
+
 
 .order-status .end{
     color: green;
@@ -525,38 +550,8 @@ button{
     top: -30px;
 }
 
-.plate-main-div{
-    background-color: white;
-    color: black;
-    font-family: yekan-bakh-heavy;
-    border: 3px solid black;
-    border-radius: 5px;
-    padding: 0 5px;
-    overflow: hidden;
-}
-
-.plate-main-div div{
-    display: inline-block;
-}
-
-.plate-main-div .plate-region{
-    position: relative;
-    top: 7px;
-    right: -2px;
-}
-.plate-main-div .plate-region::after{
-    content: 'ایران ';
-    font-size: 8px;
-    position: relative;
-    top: -15px;
-    right: -15px;
-}
-
-.plate-main-div .spliter{
-    width: 2px;
-    height: 25px;
-    margin: 0;
-    background-color: black;
+.set-yekan-bakh-bold{
+    font-family: yekan-bakh-bold;
 }
 /*
 #0466c8
