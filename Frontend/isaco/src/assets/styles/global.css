@@ -396,25 +396,26 @@ button{
     color: red;
 }
 
-.admin-financial-report-main-div{
+.add-new-employee-main-div{
     background-color: #0353a4;
     border-radius: 10px;
     width: 312px;
     margin-top: 15px;
     text-align: center;
-    padding: 15px 0;
+    padding: 10px 0;
+    cursor: pointer;
 }
 
-.admin-financial-report-main-div h4{
+.add-new-employee-main-div:hover{
+     background-color: #023e7d;
+}
+
+.add-new-employee-main-div h4{
     display: inline-block;
-}
-
-.admin-financial-report-main-div span{
+    position: relative;
+    top: 2px;
+    font-family: yekan-bakh-bold;
     font-size: 20px;
-}
-
-.admin-financial-report-main-div span::after{
-    content: ' تومان';
 }
 
 .line{
@@ -424,27 +425,30 @@ button{
     margin: 10px auto;
 }
 
-.admin-service-count-report-main-div{
+.employee-list-main-div{
     background-color: #0353a4;
     border-radius: 10px;
     width: 312px;
+    height: 226px;
     margin-top: 15px;
     text-align: center;
     padding: 15px 0;
+    overflow-x: hidden;
 }
-.admin-service-count-report-main-div .count{
+.employee-list-main-div .service-name{
     float: left;
     margin-left: 5px;
 }
-.admin-service-count-report-main-div .autoservice-count,
-.admin-service-count-report-main-div .enginegearbox-count,
-.admin-service-count-report-main-div .detailing-count,
-.admin-service-count-report-main-div .ohters-count,
-.admin-service-count-report-main-div .fronting-count
-{
+.employee-list-main-div .employee-container{
     width: 90%;
+    padding: 5px;
+    border-radius: 5px;
     margin: 0 auto;
     text-align: right;
+}
+.employee-list-main-div .employee-container:hover{
+    cursor: pointer;
+    background-color: #002855;
 }
 
 .admin-most-car-order-report{

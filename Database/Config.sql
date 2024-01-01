@@ -1014,4 +1014,8 @@ return(
 select id,LicensePlate,Color,OwnerName,OwnerLastName,OwnerPhoneNumber,ServicesListIds,FORMAT(StartTime,'yyyy/MM/dd','fa') as 'StartTime',EndTime,CarName,Engine,CarCategory,Colors from isaco.Orders inner join isaco.CarsList on CarsList.carId = Orders.carId where ServicesListIds like '%' + @serviceName + '%'
 )
 
+go
 
+create view employeeList
+as
+select * from isaco.Employee

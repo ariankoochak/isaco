@@ -122,6 +122,18 @@ app.get("/getServiceOrder", (req, res) => {
     });
 });
 
+app.get("/Employees", (req, res) => {
+    console.log(`select * from employeeList`);
+    sql.connect(configDB, function (err) {
+        if (err) console.log(err);
+        let request = new sql.Request();
+        request.query(`select * from employeeList`, function (err, recordset) {
+            if (err) console.log(err);
+            res.send(recordset.recordsets);
+        });
+    });
+});
+
 app.listen(port, () => {
     console.log(`isaco app listening on port ${port}`);
 });

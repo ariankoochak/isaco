@@ -4,7 +4,6 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { logining } from "../../utils/store/slices/userLogin";
 import { useNavigate } from "react-router-dom";
-import codeToPlate from "../../services/utils/CodeToPlate";
 
 export default function LoginPage() {
     const dispatch = useDispatch();
