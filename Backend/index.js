@@ -134,6 +134,29 @@ app.get("/Employees", (req, res) => {
     });
 });
 
+app.post("/AddEmployee", (req, res) => {
+    let employee = req._parsedUrl.query.split("?");
+    employee = employee.map((data) => {
+        return decodeURIComponent(data);
+    });
+    console.log(employee);
+    console.log(employee[4]);
+    console.log(
+        `exec AddEmployee '${employee[4]}','${employee[5]}',N'${employee[1]}',N'${employee[2]}','${employee[0]}','${employee[3]}'`
+    );
+    sql.connect(configDB, function (err) {
+        if (err) console.log(err);
+        let request = new sql.Request();
+        request.query(
+            `exec AddEmployee '${employee[4]}','${employee[5]}',N'${employee[1]}',N'${employee[2]}','${employee[0]}','${employee[3]}'`,
+            function (err, recordset) {
+                if (err) console.log(err);
+                res.status(200).end();
+            }
+        );
+    });
+});
+
 app.listen(port, () => {
     console.log(`isaco app listening on port ${port}`);
 });

@@ -1,15 +1,45 @@
 import React, { useRef } from 'react'
 import { useDispatch } from 'react-redux';
 import { off } from '../../utils/store/slices/isAddEmployeeState';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
 
 export default function AddNewEmployeeState() {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const serviceName = useRef();
     const employeeName = useRef();
     const employeeLastName = useRef();
     const employeePhoneNumber = useRef();
+    const employeeUsername = useRef();
+    const employeePassword = useRef();
+
     const handleCancelBtn = ()=>{
         dispatch(off())
+    }
+    const handleSubmitBtn = (e)=>{
+        e.preventDefault()
+        axios
+            .post(
+                `http://localhost:3000/AddEmployee?${serviceName.current.value}?${employeeName.current.value}?${employeeLastName.current.value}?${employeePhoneNumber.current.value}?${employeeUsername.current.value}?${employeePassword.current.value}`
+            )
+            .then(function (response) {
+                console.log(response.status);
+                axios
+                    .get(`http://localhost:3000/Orders`)
+                    .then(function (response) {
+                        dispatch(off());
+                        window.location.reload();
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                handleCancelBtn();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
   return (
       <>
@@ -28,35 +58,57 @@ export default function AddNewEmployeeState() {
                           <option value={"Admin"}>ادمین</option>
                           <option value={"Detailing"}>سرامیک و صافکاری</option>
                           <option value={"Fronting"}>جلوبندی</option>
-                          <option value={"EngineAndGearbox"}>موتور و گیربکس</option>
+                          <option value={"EngineAndGearbox"}>
+                              موتور و گیربکس
+                          </option>
                           <option value={"autoService"}>اتوسرویس</option>
                       </select>
                       <br />
-                      <label for="ownerName">نام : </label>
+                      <label for="employeeName">نام : </label>
                       <input
                           ref={employeeName}
                           type="text"
-                          id="ownerName"
-                          name="ownerName"
+                          id="employeeName"
+                          name="employeeName"
                       />
                       <br />
-                      <label for="ownerLastName">نام خانوادگی : </label>
+                      <label for="employeeLastName">نام خانوادگی : </label>
                       <input
                           ref={employeeLastName}
                           type="text"
-                          id="ownerLastName"
-                          name="ownerLastName"
+                          id="employeeLastName"
+                          name="employeeLastName"
                       />
                       <br />
-                      <label for="ownerPhoneNumber">شماره همراه : </label>
+                      <label for="employeePhoneNumber">شماره همراه : </label>
                       <input
                           ref={employeePhoneNumber}
                           type="text"
-                          id="ownerPhoneNumber"
-                          name="ownerPhoneNumber"
+                          id="employeePhoneNumber"
+                          name="employeePhoneNumber"
                       />
                       <br />
-                      <button type="submit" className="submit-btn" onClick={""}>
+                      <label for="s">نام کاربری : </label>
+                      <input
+                          ref={employeeUsername}
+                          type="text"
+                          id="employeeUsername"
+                          name="employeeUsername"
+                      />
+                      <br />
+                      <label for="employeePassword">رمز عبور : </label>
+                      <input
+                          ref={employeePassword}
+                          type="text"
+                          id="employeePassword"
+                          name="employeePassword"
+                      />
+                      <br />
+                      <button
+                          type="submit"
+                          className="submit-btn"
+                          onClick={handleSubmitBtn}
+                      >
                           ثبت
                       </button>
                       <button className="cancel-btn" onClick={handleCancelBtn}>

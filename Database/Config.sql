@@ -861,6 +861,35 @@ VALUES (
 ); 
 
 go
+
+create proc AddEmployee
+(
+@employeeUsername NVARCHAR(50),
+@employeePassword NVARCHAR(50),
+@employeeName NVARCHAR(50),
+@employeeLastName NVARCHAR(50),
+@employeeServiceName NVARCHAR(50),
+@employeePhoneNumber NVARCHAR(50)
+)
+AS
+INSERT INTO isaco.Employee(
+    UserName,
+    UserPassword,
+    FirstName,
+    LastName,
+    ServeiceName,
+    PhoneNumber)
+VALUES (
+	@employeeUsername,
+	@employeePassword,
+    @employeeName,
+    @employeeLastName,
+    @employeeServiceName,
+    @employeePhoneNumber
+); 
+
+
+go
 create function FindOrderById (@id bigint)
 returns table
 as

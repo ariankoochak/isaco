@@ -581,17 +581,17 @@ button{
 }
 
 .add-new-employee-state-main-div-upper .add-employee-div select,
-.add-new-employee-state-main-div-upper .add-employee-div #LisencePlate,
-.add-new-employee-state-main-div-upper .add-employee-div #ownerName,
-.add-new-employee-state-main-div-upper .add-employee-div #ownerLastName,
-.add-new-employee-state-main-div-upper .add-employee-div #ownerPhoneNumber{
+.add-new-employee-state-main-div-upper .add-employee-div #employeeName,
+.add-new-employee-state-main-div-upper .add-employee-div #employeeUsername,
+.add-new-employee-state-main-div-upper .add-employee-div #employeePassword,
+.add-new-employee-state-main-div-upper .add-employee-div #employeeLastName,
+.add-new-employee-state-main-div-upper .add-employee-div #employeePhoneNumber{
    display: inline-block;
    float: left;
    position: relative;
    top: 10px;
 }
-.add-new-employee-state-main-div-upper .add-employee-div #ownerPhoneNumber,
-.add-new-employee-state-main-div-upper .add-employee-div #LisencePlate{
+.add-new-employee-state-main-div-upper .add-employee-div #employeePhoneNumber{
     direction: ltr;
 }
 
