@@ -17,7 +17,9 @@ export default function Header() {
             <h3>سلام {userData.FirstName}</h3>
             <img src={logoSrc} alt="Logo" />
             <span>{today}</span>
-            <button className="log-out-btn" onClick={handleLogOutClickBtn}>خروج</button>
+            <button className="log-out-btn" onClick={handleLogOutClickBtn}>
+                خروج
+            </button>
         </div>
     );
 }

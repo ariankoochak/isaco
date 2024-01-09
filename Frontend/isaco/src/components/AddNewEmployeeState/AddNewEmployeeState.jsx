@@ -2,11 +2,9 @@ import React, { useRef } from 'react'
 import { useDispatch } from 'react-redux';
 import { off } from '../../utils/store/slices/isAddEmployeeState';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
 
 
 export default function AddNewEmployeeState() {
-    const navigate = useNavigate()
     const dispatch = useDispatch()
     const serviceName = useRef();
     const employeeName = useRef();
