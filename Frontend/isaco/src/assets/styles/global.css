@@ -554,6 +554,87 @@ button{
     top: -30px;
 }
 
+.add-new-employee-state-main-div-upper{
+    z-index: 900;
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+}
+
+.add-new-employee-state-main-div-upper .add-employee-div{
+    background-color: #0466c8;
+    width: 350px;
+    margin: 100px auto;
+    border-radius: 10px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.add-new-employee-state-main-div-upper .add-employee-div h2,.add-new-employee-state-main-div-upper .add-employee.add-new-employee-state-main-div-upper-div h3{
+    text-align: center;
+    margin: 10px 0;
+}
+
+.add-new-employee-state-main-div-upper .add-employee-div label{
+    margin: 10px 0;
+    display: inline-block;
+}
+
+.add-new-employee-state-main-div-upper .add-employee-div select,
+.add-new-employee-state-main-div-upper .add-employee-div #LisencePlate,
+.add-new-employee-state-main-div-upper .add-employee-div #ownerName,
+.add-new-employee-state-main-div-upper .add-employee-div #ownerLastName,
+.add-new-employee-state-main-div-upper .add-employee-div #ownerPhoneNumber{
+   display: inline-block;
+   float: left;
+   position: relative;
+   top: 10px;
+}
+.add-new-employee-state-main-div-upper .add-employee-div #ownerPhoneNumber,
+.add-new-employee-state-main-div-upper .add-employee-div #LisencePlate{
+    direction: ltr;
+}
+
+.add-new-employee-state-main-div-upper.add-new-employee-state-main-div-upper .add-employee-div button{
+    margin-top: 20px;
+    width: 48%;
+    margin-right: 5px;
+    padding: 5px 0;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    
+    color: white;
+}
+.add-new-employee-state-main-div-upper .add-employee-div .submit-btn{
+    background-color: #031b36;
+}
+
+.add-new-employee-state-main-div-upper .add-employee-div .cancel-btn{
+    background-color: #0080ff;
+}
+.add-new-employee-state-main-div-upper .add-employee-div input{
+    background-color: #002855;
+    border: none;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    font-family: yekan-bakh-regular;
+}
+
+.add-new-employee-state-main-div-upper .add-employee-div .detail-input{
+   width: 97%;
+}
+.add-new-employee-state-main-div-upper .add-employee-div input[type='checkbox']{ 
+    position: relative;
+    top: 3px;
+}
+.add-new-employee-state-main-div-upper .add-employee-div input[type='checkbox']:checked{
+    accent-color:  #031b36;
+}
+
+
 .set-yekan-bakh-bold{
     font-family: yekan-bakh-bold;
 }

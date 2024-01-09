@@ -10,9 +10,12 @@ import AdminLastDoneOrder from "../../components/AdminLastDoneOrder/AdminLastDon
 import UpcoBtn from '../../components/UpcoBtn/UpcoBtn';
 import EmployeeList from '../../components/EmployeeList/EmployeeList';
 import AddNewEmployee from '../../components/AddNewEmployee/AddNewEmployee';
+import AddNewEmployeeState from '../../components/AddNewEmployeeState/AddNewEmployeeState';
 export default function AdminPage() {
     const dispatch = useDispatch();
   const isAddOrderState = useSelector((state)=>state.isAddOrderState.isAddOrderState)
+  const isAddEmployeeState = useSelector((state)=>state.isAddEmployeeState.isAddEmployeeState)
+
   useEffect(()=>{
     axios
         .get(`http://localhost:3000/Orders`)
@@ -27,6 +30,7 @@ export default function AdminPage() {
   return (
       <>
           {isAddOrderState && <AddOrderState />}
+          {isAddEmployeeState && <AddNewEmployeeState />}
           <div className="main-container">
               <Header />
               <AddNewOrder />
